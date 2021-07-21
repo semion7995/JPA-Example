@@ -1,4 +1,4 @@
-package foler;
+package plainKey.fichesSequenceExample;
 
 import javax.persistence.*;
 

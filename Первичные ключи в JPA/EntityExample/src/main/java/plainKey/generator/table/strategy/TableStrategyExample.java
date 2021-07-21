@@ -1,4 +1,4 @@
-package generator.table.strategy;
+package plainKey.generator.table.strategy;
 
 import javax.persistence.Id;
 import javax.persistence.TableGenerator;

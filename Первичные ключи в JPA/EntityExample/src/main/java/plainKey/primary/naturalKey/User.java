@@ -1,4 +1,4 @@
-package primary.naturalKey;
+package plainKey.primary.naturalKey;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package generate.suragat.autoKey;
+package plainKey.generate.suragat.autoKey;
 
 import lombok.Getter;
 import lombok.Setter;
