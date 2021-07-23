@@ -1,13 +1,19 @@
-package compositeKey;
+package compositeKey.CustomerOne;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * Тут рассматривается пример добавления составного ключа на примере серия + номер паспорта
  *
  */
-public class CompositeKey {
+@EqualsAndHashCode
+@ToString
+public class CompositeKey implements Serializable {
     static final long serialVersionUID = 1L;
 
     @Getter
