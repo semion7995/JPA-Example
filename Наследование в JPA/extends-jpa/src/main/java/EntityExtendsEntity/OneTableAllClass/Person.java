@@ -15,12 +15,9 @@ import javax.persistence.Inheritance;
 @DiscriminatorColumn
 @ToString
 public abstract class Person extends Human {
+
     @Getter
     @Setter
     private String name;
 
-    public static void main(String[] args) {
-        var am = new AsiaMan();
-
-    }
 }
