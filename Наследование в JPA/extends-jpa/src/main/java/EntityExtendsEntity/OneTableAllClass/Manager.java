@@ -1,14 +1,11 @@
 package EntityExtendsEntity.OneTableAllClass;
 
-import EntityExtendsNormalClass.Human;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-
 /**
  * теряется возможность указывать not null ограничения для столбцов,
  * могут быть проблемы с производительностью при изменении/добавлении строк,
@@ -17,13 +14,11 @@ import javax.persistence.Inheritance;
  */
 @SuppressWarnings("PMD")
 @Entity
-@Inheritance//аннотация для базового класса
-@DiscriminatorColumn
+@DiscriminatorValue("MANAGER")
 @ToString
-public abstract class Person extends Human {
-
+public class Manager extends Person{
     @Getter
     @Setter
-    private String name;
+    private Long managerGroup;
 
 }

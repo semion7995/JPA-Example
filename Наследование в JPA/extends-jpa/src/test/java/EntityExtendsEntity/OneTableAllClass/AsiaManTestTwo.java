@@ -21,31 +21,25 @@ public class AsiaManTestTwo {
         asiaMan.setNational("I'm Asian Man ");
         entityManagerFactory = Persistence.createEntityManagerFactory("ru.easyjava.data.jpa.hibernate");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(asiaMan);
-        System.out.println(asiaMan);
-        entityManager.flush();
+        entityManager.createQuery("from AsiaMan ").getResultList().forEach(System.out::println);
         entityManager.remove(asiaMan);
         entityManager.persist(asiaMan);
         entityManager.createQuery("from AsiaMan ").getResultList().forEach(System.out::println);
-
-
-
 
         asiaMan.setName("Semen");
         asiaMan.setNational("Asia");
         entityManager.getTransaction().commit();
         entityManager.close();
 
-
-
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         asiaMan = entityManager.merge(asiaMan);
         entityManager.refresh(asiaMan);
+        asiaMan.setNational("Belarus");
+        asiaMan.setName("Havr");
         entityManager.createQuery("from AsiaMan ").getResultList().forEach(System.out::println);
-
         entityManager.getTransaction().commit();
         entityManager.clear();
         /**

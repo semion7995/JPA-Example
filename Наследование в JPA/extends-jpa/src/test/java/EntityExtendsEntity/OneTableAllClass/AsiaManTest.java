@@ -22,44 +22,35 @@ public class AsiaManTest {
         entityManager.getTransaction().begin();
         entityManager.persist(asiaMan);
         entityManager.flush();
+        entityManager.createQuery("from AsiaMan").getResultList().forEach(man->{
+            System.out.println(asiaMan.getId());
+            System.out.println(asiaMan.getNational());
+            System.out.println(asiaMan.getName());
+            System.out.println();
+        });
         entityManager.getTransaction().commit();
         entityManager.close();
     }
 
-    @Test
-    public void getAsiaManTest(){
-        System.out.println("getAsianTest");
-        entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-         entityManager.createQuery("from AsiaMan").getResultList().forEach(asiaMan->{
-             System.out.println(asiaMan);
-         });
-        entityManager.getTransaction().commit();
-    }
+
     @Test
     public void refreshAsiaManTest(){
-        entityManager.remove(asiaMan);
-        asiaMan.setName("Anton");
-        asiaMan.setName("I'm New Asia Man ");
-        entityManager.persist(asiaMan);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.remove(asiaMan);
-        entityManager.merge(asiaMan);
-        entityManager.refresh(asiaMan);
-        entityManager.flush();
-        entityManager.getTransaction().commit();
-    }
-    @Test
-    public void getAsiaManTestTwo(){
-        System.out.println("getAsianTest Two");
-        entityManager.getTransaction().begin();
-        entityManager.createQuery("from AsiaMan").getResultList().forEach(asiaMan->{
-            System.out.println("ID:" + ((AsiaMan) asiaMan).getId());
-            System.out.println("Name:" +((AsiaMan) asiaMan).getName());
-            System.out.println("National:" +((AsiaMan) asiaMan).getNational());
+        AsiaMan merge = entityManager.merge(asiaMan);
+        entityManager.refresh(merge);
+        merge.setName("Anton");
+        merge.setNational("I'm New Russian ");
+        entityManager.createQuery("from AsiaMan").getResultList().forEach(man->{
+            System.out.println(merge.getId());
+            System.out.println(merge.getNational());
+            System.out.println(merge.getName());
             System.out.println();
         });
+
+        entityManager.flush();
         entityManager.getTransaction().commit();
+        entityManager.close();
     }
 
     /**
@@ -95,8 +86,4 @@ public class AsiaManTest {
      *         em.clear(); // op is DETACHED now
      */
 
-    @Test
-    public void afterResultTest(){
-        System.out.println("afterResultTest");
-    }
 }
