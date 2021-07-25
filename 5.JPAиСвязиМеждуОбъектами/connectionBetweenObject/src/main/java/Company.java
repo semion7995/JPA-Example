@@ -8,7 +8,7 @@ import java.util.Collection;
 
 @Entity
 @ToString
-public class Company {
+public class Company extends AbstractIdentifiableObject{
 
     @Getter
     @Setter

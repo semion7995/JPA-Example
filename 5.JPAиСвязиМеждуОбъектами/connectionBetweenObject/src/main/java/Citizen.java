@@ -1,13 +1,13 @@
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
 
 @Entity
-@ToString
+@NamedQueries({
+        @NamedQuery(name = "Citizen.test", query = "from Citizen")
+})
 public class Citizen extends AbstractIdentifiableObject {
 
     @Getter
